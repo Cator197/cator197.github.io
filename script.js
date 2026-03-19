@@ -42,8 +42,8 @@ const categorias = [
     nome: "💪 Suplementos",
     links: [
       {
-        nome: "Whey Protein",
-        url: "https://SEU-LINK-AQUI.com"
+        nome: "Creatina Monohidratada 500g Soldiers Nutrition 100% Pura - Cole este texto no buscador do Mercado Livre: GFRK6S-V732",
+        url: "https://meli.la/2gGjS39"
       }
     ]
   }
