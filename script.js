@@ -46,6 +46,15 @@ const categorias = [
         url: "https://meli.la/2gGjS39"
       }
     ]
+  },
+  {
+    nome: "💪 Computador",
+    links: [
+      {
+        nome: "Combo Teclado E Mouse Sem Fio Logitech Mk250 Grafite - Cole este texto no buscador do Mercado Livre: GFRK6S-7K3D",
+        url: "https://meli.la/1tU3FCY"
+      }
+    ]
   }
 ];
 
