@@ -7,23 +7,34 @@ body {
 
 .container {
   max-width: 500px;
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 20px;
   text-align: center;
 }
 
 h1 {
+  margin-bottom: 5px;
+}
+
+.categoria {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.categoria h2 {
   margin-bottom: 10px;
+  font-size: 18px;
+  color: #94a3b8;
 }
 
 .botao {
   display: block;
-  margin: 12px 0;
-  padding: 16px;
+  margin: 10px 0;
+  padding: 14px;
   background: #22c55e;
   color: white;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: bold;
   transition: 0.2s;
 }
