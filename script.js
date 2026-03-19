@@ -1,5 +1,6 @@
 const categorias = [
   {
+    id: "filamentos",
     nome: "🧵 Filamentos para Impressora 3D",
     links: [
       {
@@ -17,6 +18,7 @@ const categorias = [
     ]
   },
   {
+    id: "tabacaria",
     nome: "🔥 Tabacaria",
     links: [
       {
@@ -30,15 +32,17 @@ const categorias = [
     ]
   },
   {
+    id: "pintura",
     nome: "🎨 Pintura",
     links: [
       {
-        nome: "*Caneta Marcadora Acrílica Canetinha Pincel Artístico 12 Cores Vibrantes - Cole este texto no buscador do Mercado Livre: GFRK6S-DSKN",
+        nome: "Caneta Marcadora Acrílica Canetinha Pincel Artístico 12 Cores Vibrantes - Cole este texto no buscador do Mercado Livre: GFRK6S-DSKN",
         url: "https://meli.la/1qSHHdd"
       }
     ]
   },
   {
+    id: "suplementos",
     nome: "💪 Suplementos",
     links: [
       {
@@ -48,7 +52,8 @@ const categorias = [
     ]
   },
   {
-    nome: "💪 Computador",
+    id: "computador",
+    nome: "💻 Computador",
     links: [
       {
         nome: "Combo Teclado E Mouse Sem Fio Logitech Mk250 Grafite - Cole este texto no buscador do Mercado Livre: GFRK6S-7K3D",
@@ -58,25 +63,67 @@ const categorias = [
   }
 ];
 
-const container = document.getElementById("links");
+const filtrosContainer = document.getElementById("filtros");
+const linksContainer = document.getElementById("links");
 
-categorias.forEach(cat => {
-  const div = document.createElement("div");
-  div.className = "categoria";
+function renderFiltros(categoriaAtiva) {
+  filtrosContainer.innerHTML = "";
 
-  const titulo = document.createElement("h2");
-  titulo.textContent = cat.nome;
+  const filtros = [
+    { id: "todos", nome: "Todos" },
+    ...categorias.map(cat => ({ id: cat.id, nome: cat.nome }))
+  ];
 
-  div.appendChild(titulo);
+  filtros.forEach(filtro => {
+    const btn = document.createElement("button");
+    btn.textContent = filtro.nome;
+    btn.className = "filtro-btn";
 
-  cat.links.forEach(link => {
-    const a = document.createElement("a");
-    a.href = link.url;
-    a.textContent = link.nome;
-    a.target = "_blank";
-    a.className = "botao";
-    div.appendChild(a);
+    if (filtro.id === categoriaAtiva) {
+      btn.classList.add("ativo");
+    }
+
+    btn.addEventListener("click", () => {
+      renderPagina(filtro.id);
+    });
+
+    filtrosContainer.appendChild(btn);
   });
+}
 
-  container.appendChild(div);
-});
+function renderLinks(categoriaAtiva) {
+  linksContainer.innerHTML = "";
+
+  const categoriasFiltradas =
+    categoriaAtiva === "todos"
+      ? categorias
+      : categorias.filter(cat => cat.id === categoriaAtiva);
+
+  categoriasFiltradas.forEach(cat => {
+    const div = document.createElement("div");
+    div.className = "categoria";
+
+    const titulo = document.createElement("h2");
+    titulo.textContent = cat.nome;
+    div.appendChild(titulo);
+
+    cat.links.forEach(link => {
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.textContent = link.nome;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.className = "botao";
+      div.appendChild(a);
+    });
+
+    linksContainer.appendChild(div);
+  });
+}
+
+function renderPagina(categoriaAtiva = "todos") {
+  renderFiltros(categoriaAtiva);
+  renderLinks(categoriaAtiva);
+}
+
+renderPagina();
